@@ -1,0 +1,25 @@
+{% load static %}
+<table class="table table-hover">
+    <thead class="thead-dark">
+        <tr>
+            <th>Nat</th>
+            <th>Pos</th>
+            <th>Player</th>
+            <th>Age</th>
+            <th>Ovr</th>
+            <th>Goals</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for player in players %}
+            <tr class="clickRow">
+                <td><img src="{% static player.player_info.nation.flag %}" width="30px" height="20px"/></td>
+                <td>{{ player.player_info.pos }}</td>
+                <td>{{ player.player_info.name }}</td>
+                <td>{{ player.player_attr.age }}</td>
+                <td><div style="width: 100%; height: 50%; border: solid 1px grey;"><div style="font-size: small;height: 100%; width: {{ player.player_attr.ovr_as_percent }}%; background: var(--pCol); color: var(--sCol)">{{ player.player_attr.ovr|floatformat }}</div></div></td>
+                <td>{{ player.goal_count }}</td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>

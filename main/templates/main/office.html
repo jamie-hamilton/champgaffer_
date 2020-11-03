@@ -1,0 +1,45 @@
+{% extends "main/layout.html" %}
+
+{% block title %}
+    Office.
+{% endblock %}
+
+{% block main %}
+<div class="container" style="--pCol: {{ user_club.club_info.primary_colour }}; --sCol: {{ user_club.club_info.secondary_colour }}">
+    <div class="row mb-5">
+        <div class="col-12 col-md-12">
+            <div class="clubTitle">
+                <h1>{{ user_club.club_info.name }}</h1>
+            </div>
+        </div>
+    </div>
+    <div class="row mb-5">
+        <div class="col-6 col-md-6">
+            <div class="clubOvrCont">
+                <p class="clubOvr" style="width:{{ user_club.club_attr.ovr_as_percent }}%">Ovr: {{ user_club.club_attr.ovr }} / 20</p>
+            </div>
+        </div>
+        <div class="col-6 col-md-6">
+            <div class="clubOvrCont">
+            {% if user_club.club_attr.is_top_league %}
+                <p class="superLeague">#{{ user_club.club_attr.pos }} — Super League</p>
+            {% else %}
+                <p class="subLeague">#{{ user_club.club_attr.pos }} — Sub League</p>
+            {% endif %}
+            </div>
+        </div>
+    </div>
+    <div class="row mb-5">
+        {% include 'main/partials/email.html' %}
+        {% include 'main/partials/fixtures.html' %}
+    </div>
+    <div class="row mb-5">
+        {% include 'main/partials/user_manager_card.html' %}
+        {% include 'main/partials/star_att_card.html' %}
+        {% include 'main/partials/star_def_card.html' %}
+    </div>
+    <div class="row mb-5">
+        {% include 'main/partials/player_table.html' %}
+    </div>
+</div>
+{% endblock %}

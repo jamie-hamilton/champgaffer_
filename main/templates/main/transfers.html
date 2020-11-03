@@ -1,0 +1,56 @@
+{% extends "main/layout.html" %}
+
+{% block title %}
+    Transfers.
+{% endblock %}
+
+{% block main %}
+<div class="container">
+    <div class="row justify-content-start">
+        <h4>Transfer Funds: £{{ user_club.club_attr.budget }}m</h4>
+    </div>
+    <div class="row justify-content-end">
+        <form class="form-inline" action="/transfers" name="search" method="GET">
+                <div class="form-group mb-2">
+                    <input autocomplete="off" autofocus class="form-control" name="q_name" placeholder="Player name..." type="text">
+                </div>
+                <div class="form-group mb-2">
+                    <select class="form-control" name="q_club">
+                        <option selected value="">All Clubs</option>
+                        {% for club in clubs %}
+                            <option value="{{ club.club_info.name }}">{{ club.club_info.name }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <div class="form-group mb-2">
+                    <select class="form-control" name="q_pos">
+                        <option selected value="">Any position</option>
+                        <option value="GK">GK</option>
+                        <option value="DEF">DEF</option>
+                        <option value="MID">MID</option>
+                        <option value="ATT">ATT</option>
+                    </select>
+                </div>
+                <div class="form-group mb-2">
+                    <input autocomplete="off" class="form-control" min="1" max="20" name="q_ovr" placeholder="Min Ovr..." type="number">
+                </div>
+                <div class="form-group mb-2">
+                    <select class="form-control" name="q_val">
+                        <option selected value="40">Max Value...</option>
+                        <option value="30">£30m</option>
+                        <option value="20">£20m</option>
+                        <option value="15">£15m</option>
+                        <option value="10">£10m</option>
+                        <option value="7">£7m</option>
+                        <option value="5">£5m</option>
+                    </select>
+                </div>
+                <input class="btn btn-primary mb-2" name="search" type="submit" value="Search">
+                <a class="btn btn-primary mb-2" href="{% url 'transfers'%}" role="button">Reset</a>
+        </form>
+    </div>
+    <div class="row">
+        {% include 'main/partials/transfer_table.html' %}
+    </div>
+</div>
+{% endblock %}

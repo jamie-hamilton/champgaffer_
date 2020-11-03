@@ -1,0 +1,20 @@
+{% load static %}
+<div class="col-6 col-md-4 mx-auto">
+    <div class="card mb-3">
+        <h5 class="card-header">{{ star_att.player_info.name }}</h5>
+        <div class="sticker">
+            <div class="avatar-holder">
+                <img src="{% static star_att.player_info.nation.flag %}" style="width:30px; height: 20px; margin:5px;"/>
+                <h4 class="clubTitle" style="width: auto; height: 20px; float: right; margin: 5px;font-size: small;">&#x2B50; ATT</h4>
+                <img class="card-img-top" src="{{ star_att.player_info.avatar_url }}" alt="Card image cap">
+            </div>
+        </div>
+        <h5 class="card-header">{{ star_att.club.club_info.name }}</h5> 
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item">Age: {{ star_att.player_attr.age }}</li>
+            <li class="list-group-item">Nationality: {{ star_att.player_info.nation.nationality }}</li>
+            <li class="list-group-item">Value: £{{ star_att.player_attr.value }}m</li>
+            <li class="list-group-item">Ovr: {{ star_att.player_attr.ovr }}</li>
+        </ul>
+    </div>
+</div>

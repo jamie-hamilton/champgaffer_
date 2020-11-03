@@ -1,0 +1,24 @@
+<div class="col-12 col-md-6 my-auto">
+    <div class="windowfy mb-3">
+        <div class="window">
+            <div class="title-bar">
+            <div class="title-bar-text">Upcoming Fixtures</div>
+            <div class="title-bar-controls">
+                <button aria-label="Minimize"></button>
+                <button aria-label="Maximize"></button>
+                <button aria-label="Close"></button>
+            </div>
+            </div>
+            <div class="window-body">
+                <h3 class="eBrand">&#x1F4C5 <h5 class="eBrand">Fixtures</h5></h3>
+                <table>
+                    {% for fixture in fixtures %}
+                        <tr class="fixtures">
+                            <td>{{ fixture.home.club_info.name }} vs. {{ fixture.away.club_info.name }}</td>
+                        </tr>
+                    {% endfor %}
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

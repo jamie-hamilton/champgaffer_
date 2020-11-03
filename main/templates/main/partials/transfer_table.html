@@ -1,0 +1,29 @@
+{% load static %}
+<table class="table table-hover">
+    <thead class="thead-dark">
+        <tr>
+            <th>Nat</th>
+            <th>Pos</th>
+            <th>Player/Club</th>
+            <th>Age</th>
+            <th>Ovr</th>
+            <th>Val £</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for player in players %}
+            {% if player.club.club_info.primary_colour == "white" %}
+            <tr class="clickRow" style="--pCol: {{ player.club.club_info.secondary_colour }}; --sCol: {{ player.club.club_info.primary_colour }}">
+            {% else %}
+            <tr class="clickRow" style="--pCol: {{ player.club.club_info.primary_colour }}; --sCol: {{ player.club.club_info.secondary_colour }}">
+            {% endif %}
+                <td><img src="{% static player.player_info.nation.flag %}" width="30px" height="20px"/></td>
+                <td>{{ player.player_info.pos }}</td>
+                <td>{{ player.player_info.name }} ({{ player.club.club_info.name }})</td>
+                <td>{{ player.player_attr.age }}</td>
+                <td><div style="width: 100%; height: 50%; border: solid 1px grey;"><div style="font-size: small;height: 100%; width: {{ player.player_attr.ovr_as_percent }}%; background: var(--pCol); color: var(--sCol)">{{ player.player_attr.ovr|floatformat }}</div></div></td>
+                <td>£{{ player.player_attr.value }}m</td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>

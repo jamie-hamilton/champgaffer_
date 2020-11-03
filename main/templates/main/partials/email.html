@@ -1,0 +1,32 @@
+<div class="col-12 col-md-6 my-auto">
+    <div class="windowfy mb-3">
+        <div class="window">
+            <div class="title-bar">
+            <div class="title-bar-text">Me-Mail — {{ email_address }}</div>
+            <div class="title-bar-controls">
+                <button aria-label="Minimize"></button>
+                <button aria-label="Maximize"></button>
+                <button aria-label="Close"></button>
+            </div>
+            </div>
+            <div class="window-body">
+                <h3 id="result"></h3>
+                <h3 class="eBrand">&#x1F4EC <h5 class="eBrand">Me<span class="red">-</span>m</span><span class="blue">@</span>il</h5></h3>
+                <table>
+                    <tr>
+                        <th><i class="fas fa-inbox"></i></th>
+                        <th>From:</th>
+                        <th>Subject:</th>
+                    </tr>
+                    {% for email in emails %}
+                        <tr class="clickRow" id="eRow-{{ email.id }}" data-toggle="modal" data-target="#newsModal" tr>
+                            <td><i class='far fa-envelope'></i></td>
+                            <td>{{ email.sender }}</td>
+                            <td>{{ email.subject }}</td>
+                        </tr>
+                    {% endfor %}
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

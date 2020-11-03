@@ -1,0 +1,35 @@
+{% extends "main/layout.html" %}
+
+{% block title %}
+    >> Log In.
+{% endblock %}
+
+{% block main %}
+    <div class="row">
+        <div class="col-12 col-md-12">
+            <div class="clubTitle">
+                <h1>&#x26BD &nbspChampGaffer&nbsp &#x26BD</h1>
+                <p>A web-based football manager simulator</p>
+                <a class="nav-link" href="{% url 'signup' %}"><span class="code">  ^&nbsp^&nbsp&nbsp </span><span>Sign Up.</span><span class="code">  ^&nbsp^&nbsp&nbsp </span></a>
+            </div>
+        </div>
+    </div>
+    <form action="{% url 'login' %}" method="post" class="needs-validation" novalidate>
+        {% csrf_token %}
+        <div class="form-group">
+            <input autocomplete="off" autofocus class="form-control" name="username" placeholder="Username" type="text" required>
+            <div class="invalid-feedback">
+              Please provide your username.
+            </div>
+        </div>
+        <div class="form-group">
+            <input class="form-control" name="password" placeholder="Password" type="password" required>
+            <div class="invalid-feedback">
+              Please enter your password.
+            </div>
+        </div>
+        <input class="btn btn-primary" name="submit" type="submit" value="Login">
+    </form>
+    {% load static %}
+    <script src="{% static 'main/js/validate.js' %}"></script>
+{% endblock %}
